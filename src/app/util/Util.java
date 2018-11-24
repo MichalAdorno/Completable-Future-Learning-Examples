@@ -14,6 +14,14 @@ public class Util {
         );
     }
 
+    public static void printThreadDiagnostics(String info) {
+        System.out.printf(
+                "[Thread-%s][%s]\n",
+                Thread.currentThread().getId(),
+                info
+        );
+    }
+
     public static void printThreadId() {
         System.out.printf("[Thread-%s]\n", Thread.currentThread().getId());
     }

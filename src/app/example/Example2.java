@@ -1,10 +1,9 @@
 package app.example;
 
-import app.data.*;
+import app.data.A;
 import app.task.Task;
 import app.util.Util;
 
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
