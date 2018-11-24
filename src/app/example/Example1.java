@@ -1,4 +1,10 @@
-package app;
+package app.example;
+
+import app.task.Task;
+import app.util.Util;
+import app.data.A;
+import app.data.B;
+import app.data.C;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -18,17 +24,18 @@ public class Example1 {
         CompletableFuture<Void> barrier = CompletableFuture
                 .allOf(aCF, bCF, cCF);
 
-        Task.printThreadId();
+        Util.printThreadId();
         //----------------------------------------------------------
 
         barrier.join();
+        //all threads synchronize here and they are not active afterwards
+        Util.assertAndPrintIsDone(aCF, "aCF"); //check that threads are done
+        Util.assertAndPrintIsDone(bCF, "bCF");
+        Util.assertAndPrintIsDone(cCF, "cCF");
         long endTime1 = System.currentTimeMillis();
-        Task.assertAndPrintIsDone(aCF, "aCF");
-        Task.assertAndPrintIsDone(bCF, "bCF");
-        Task.assertAndPrintIsDone(cCF, "cCF");
         //----------------------------------------------------------
 
-        A aResult = aCF.get();
+        A aResult = aCF.get(); //immediate return because threads are done
         B bResult = bCF.get();
         C cResult = cCF.get();
 
@@ -41,7 +48,7 @@ public class Example1 {
         System.out.printf("[A-result] %s\n", aResult);
         System.out.printf("[B-result] %s\n", bResult);
         System.out.printf("[C-result] %s\n", cResult);
-        Task.printThreadId();
+        Util.printThreadId();
         //----------------------------------------------------------
 
     }

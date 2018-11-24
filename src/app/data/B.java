@@ -1,4 +1,4 @@
-package app;
+package app.data;
 
 public class B extends Base {
     public B(String val){

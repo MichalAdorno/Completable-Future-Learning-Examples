@@ -1,4 +1,4 @@
-package app;
+package app.data;
 
 public class Base {
     String val;
