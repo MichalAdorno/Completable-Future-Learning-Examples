@@ -1,7 +1,7 @@
 package app;
 
 
-import app.example.Example1;
+import app.example.*;
 
 import java.util.concurrent.ExecutionException;
 
@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         //----------------------------------------------------------
-        Example1.show();
-
+//        Example1.show();
+        Example2.show();
         //----------------------------------------------------------
     }
 

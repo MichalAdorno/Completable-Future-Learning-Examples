@@ -1,7 +1,7 @@
 package app.data;
 
 public class Base {
-    String val;
+    public String val;
 
     public Base(String val){
         this.val = val;
