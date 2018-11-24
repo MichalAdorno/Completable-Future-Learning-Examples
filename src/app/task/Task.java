@@ -8,7 +8,7 @@ public class Task {
     public static <T extends Base> T doTask(Long timeout, T t){
         try{
             Thread.sleep(timeout);
-            Util.printThreadId();
+            Util.printThreadDiagnostics(timeout, t.val);
             return t;
         } catch(InterruptedException e) {
             throw new RuntimeException(e);
