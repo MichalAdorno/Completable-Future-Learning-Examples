@@ -14,13 +14,15 @@ public class Example1 {
         long startTime = System.currentTimeMillis();
         //----------------------------------------------------------
 
+        //these tasks run in parallel
         CompletableFuture<A> aCF = CompletableFuture
                 .supplyAsync(() -> Task.doTask(1000L, new A("AAA")));
         CompletableFuture<B> bCF = CompletableFuture
                 .supplyAsync(() -> Task.doTask(500L, new B("BBB")));
         CompletableFuture<C> cCF = CompletableFuture
                 .supplyAsync(() -> Task.doTask(500L, new C("CCC")));
-
+        //a barrier at which all the tasks synchronize
+        //and do not trespass when "joining" it
         CompletableFuture<Void> barrier = CompletableFuture
                 .allOf(aCF, bCF, cCF);
 

@@ -18,14 +18,14 @@ public class Example2 {
         long startTime = System.currentTimeMillis();
 
         //----------------------------------------------------------
-
-
+        //COMBINATION
+        //parallel, runs as long as the longest running single task
         CompletableFuture<A> first = CompletableFuture
                 .supplyAsync(() -> Task.doTask(500L, new A("[cf 0]")));
 
         CompletableFuture<A> combined = first;
 
-        for(int i=1; i < noTasks; i++){
+        for(int i = 1; i < noTasks; i++){
             final int nr = i;
             CompletableFuture<A> newTask = CompletableFuture
                     .supplyAsync(
